@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>مركز الرجم التجاري - منتجات طبيعية عالية الجودة</title>
+  <meta name="description" content="أجود أنواع العسل، الزبيب، الفستق، اللوز ومنتجات المكسرات الأخرى. جمله وتجزئه بأسعار منافسة." />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root{--primary:#8B4513;--primary-dark:#654321;--secondary:#CD853F;--light:#1b0f07;--dark:#f5f1ea;--gray:#bda493;--shadow:0 4px 6px rgba(0,0,0,.3);--transition:all .3s ease}
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+    body{background:var(--light);color:var(--dark);line-height:1.6}
+    header{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);color:#fff;padding:1rem 0;box-shadow:var(--shadow);position:sticky;top:0;z-index:1000}
+    .header-container{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;padding:0 1.5rem}
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo h1{font-size:1.8rem;font-weight:700}
+    .logo-icon{font-size:2rem;color:var(--secondary)}
+    nav ul{display:flex;list-style:none;gap:1.5rem}
+    nav a{color:#fff;text-decoration:none;font-weight:500;transition:var(--transition);padding:.5rem 0;position:relative}
+    nav a:hover{color:var(--secondary)}
+    nav a::after{content:'';position:absolute;bottom:0;right:0;width:0;height:2px;background:var(--secondary);transition:var(--transition)}
+    nav a:hover::after{width:100%}
+    .intro{padding:5rem 1rem;text-align:center}
+    .intro-content{max-width:1000px;margin:0 auto;background:rgba(255,255,255,.05);padding:2rem;border-radius:12px;box-shadow:var(--shadow);backdrop-filter: blur(2px);border:1px solid rgba(255,255,255,.08)}
+    .intro h2{font-size:2.2rem;margin-bottom:1rem;color:#ffd5a6}
+    .intro p{font-size:1.2rem;margin-bottom:1.5rem;color:#f0e6db}
+    .tagline{font-size:1.4rem;color:#ffbf86;font-weight:700;margin:1.2rem 0}
+    .cta-button{display:inline-block;background:var(--secondary);color:#000;padding:.8rem 2rem;border-radius:50px;text-decoration:none;font-weight:700;transition:var(--transition);box-shadow:var(--shadow)}
+    .cta-button:hover{transform:translateY(-3px)}
+    .products-section{padding:4rem 1rem;max-width:1200px;margin:0 auto}
+    .section-title{text-align:center;margin-bottom:3rem;color:#ffd5a6;font-size:2.2rem;position:relative;padding-bottom:1rem}
+    .section-title::after{content:'';position:absolute;bottom:0;right:50%;transform:translateX(50%);width:100px;height:4px;background:var(--secondary)}
+    .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2rem}
+    .product-card{background:rgba(0,0,0,.35);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);transition:var(--transition);border:1px solid rgba(255,255,255,.08)}
+    .product-card:hover{transform:translateY(-8px)}
+    .product-image{height:200px;overflow:hidden;background:#1a1a1a}
+    .product-image img{width:100%;height:100%;object-fit:cover;display:block}
+    .product-info{padding:1.3rem;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(0,0,0,.2))}
+    .product-name{font-size:1.2rem;margin-bottom:.4rem;color:#ffbf86}
+    .product-desc{color:#d9c8ba;margin-bottom:.3rem}
+    footer{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 100%);color:#fff;padding:3rem 1rem 1.5rem}
+    .footer-container{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem}
+    .footer-section h3{font-size:1.3rem;margin-bottom:1.2rem;position:relative;padding-bottom:.5rem;color:#ffe0b5}
+    .footer-section h3::after{content:'';position:absolute;bottom:0;right:0;width:50px;height:2px;background:#ffe0b5}
+    .footer-links{list-style:none}
+    .footer-links li{margin-bottom:.6rem}
+    .footer-links a{color:#f0e6db;text-decoration:none;transition:var(--transition);display:block}
+    .footer-links a:hover{color:#fff;transform:translateX(-4px)}
+    .footer-about{color:#f0e6db;line-height:1.8}
+    .contact-info{color:#f0e6db}
+    .contact-info p{margin-bottom:.6rem;display:flex;align-items:center}
+    .contact-info i{margin-left:10px;color:#ffe0b5}
+    .phone-number{direction:ltr;text-align:right;display:inline-block;unicode-bidi:plaintext}
+    .footer-bottom{text-align:center;margin-top:2rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.2);color:#eee;font-size:.9rem}
+    @media (max-width:768px){
+      .header-container{flex-direction:column;gap:1rem}
+      nav ul{gap:1rem}
+      .intro h2{font-size:2rem}
+      .intro p{font-size:1rem}
+      .tagline{font-size:1.1rem}
+      .footer-container{grid-template-columns:1fr;text-align:center}
+      .footer-section h3::after{right:50%;transform:translateX(50%)}
+    }
+    @media (max-width:480px){
+      nav ul{flex-direction:column;align-items:center;gap:.5rem}
+      .intro{padding:2rem 1rem}
+      .products-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <i class="fas fa-store logo-icon" aria-hidden="true"></i>
+        <h1>مركز الرجم التجاري</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">الرئيسية</a></li>
+          <li><a href="#products">منتجاتنا</a></li>
+          <li><a href="#">الأقسام</a></li>
+          <li><a href="#contact">اتصل بنا</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="intro">
+    <div class="intro-content">
+      <img src="x.png" alt="واجهة محل مركز الرجم التجاري" loading="lazy" style="max-width:100%;height:auto;border-radius:10px;margin-bottom:2rem;">
+      <h2>مرحباً بكم في مركز الرجم التجاري</h2>
+      <p>أجود أنواع العسل، الزبيب، الفستق، اللوز ومنتجات المكسرات الأخرى</p>
+      <div class="tagline">جمله وتجزئه.. جودة .. طعم .. وأسعار منافسة</div>
+      <a href="#products" class="cta-button">استكشف المنتجات</a>
+    </div>
+  </section>
+
+  <section class="products-section" id="products">
+    <h2 class="section-title">منتجاتنا</h2>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-image">
+          <img src="WhatsApp Image 2025-09-11 at 16.29.42.jpeg" alt="عسل سدر درجة أولى" loading="lazy">
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">عسل سدر درجة أولى</h3>
+          <p class="product-desc">عسل طبيعي فاخر من أجود أنواع السدر</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="WhatsApp Image 2025-09-11 at 16.29.40.jpeg" alt="عسل زهور" loading="lazy">
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">عسل زهور</h3>
+          <p class="product-desc">خليط متنوع من رحيق الأزهار الطبيعية</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="WhatsApp Image 2025-09-11 at 16.29.35 (1).jpeg" alt="عسل الملكة" loading="lazy">
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">عسل الملكة</h3>
+          <p class="product-desc">عسل ملكي مميز بطعم لا يقاوم</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="WhatsApp Image 2025-09-11 at 16.29.26 (2).jpeg" alt="زبيب عضوي" loading="lazy">
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">زبيب عضوي</h3>
+          <p class="product-desc">زبيب طبيعي عالي الجودة من أفضل العنب</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="WhatsApp Image 2025-09-11 at 16.29.26 (1).jpeg" alt="فستق حلبي" loading="lazy">
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">فستق حلبي</h3>
+          <p class="product-desc">فستق طازج مقشر من أجود الأنواع</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="WhatsApp Image 2025-09-11 at 16.29.26 (1).jpeg" alt="لوز طبيعي" loading="lazy">
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">لوز طبيعي</h3>
+          <p class="product-desc">لوز مقشر طازج غني بالفوائد الغذائية</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>روابط سريعة</h3>
+        <ul class="footer-links">
+          <li><a href="#">الرئيسية</a></li>
+          <li><a href="#products">منتجاتنا</a></li>
+          <li><a href="#">الأقسام</a></li>
+          <li><a href="#contact">اتصل بنا</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>عن مركز الرجم</h3>
+        <p class="footer-about">
+          متجر متخصص في المنتجات الغذائية الطبيعية منذ عام 2015.<br>
+          نقدم أجود أنواع المكسرات، العسل، الزبيب والمنتجات الغذائية الأخرى.
+        </p>
+      </div>
+
+      <div class="footer-section">
+        <h3>اتصل بنا</h3>
+        <div class="contact-info">
+          <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> مدينة الرجم، اليمن</p>
+          <p><i class="fas fa-phone" aria-hidden="true"></i> <span class="phone-number">+967 773 541 614</span></p>
+          <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:info@alrigian.com">info@alrigian.com</a></p>
+          <p><i class="fas fa-clock" aria-hidden="true"></i> كل يوم من 8 صباحاً إلى 2 صباحاً</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>مركز الرجم التجاري. جميع الحقوق محفوظة. © 2025</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const yearElement = document.querySelector('.footer-bottom p');
+      if (yearElement) {
+        yearElement.innerHTML = yearElement.innerHTML.replace(/\d{4}$/, new Date().getFullYear());
+      }
+    });
+  </script>
+</body>
+</html>
