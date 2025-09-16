@@ -13,19 +13,17 @@
       --primary:#8B4513;--primary-dark:#654321;--secondary:#CD853F;
       --light:#1b0f07;--dark:#f5f1ea;--muted:#cab8aa;
       --shadow:0 4px 10px rgba(0,0,0,.35);--transition:all .28s ease;
-      /* ارتفاع البانر ونقطة التركيز - تقدر تعدلهم بسهولة */
-      --hero-h: clamp(280px, 42vh, 560px);
-      --hero-focal: 50% 38%; /* 50% أفقياً - 38% عمودياً */
+      /* تحكّم سريع في بانر الصورة */
+      --hero-h: clamp(120px, 22vh, 220px); /* أصغر من قبل */
+      --hero-focal: 50% 38%;
+      --content-max: 1200px;
     }
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
     body{background:var(--light);color:var(--dark);line-height:1.6}
 
-    /* حاوية الديسكتوب */
-    .app{
-      max-width:1200px;
-      margin:0 auto;min-height:100dvh;background:var(--light);
-      border-left:1px solid rgba(255,255,255,.06);border-right:1px solid rgba(255,255,255,.06)
-    }
+    /* الحاوية */
+    .app{max-width:var(--content-max);margin:0 auto;min-height:100dvh;background:var(--light);
+      border-left:1px solid rgba(255,255,255,.06);border-right:1px solid rgba(255,255,255,.06)}
 
     header{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);color:#fff;padding:.9rem 0;box-shadow:var(--shadow);position:sticky;top:0;z-index:1000}
     .header-container{display:flex;justify-content:space-between;align-items:center;padding:0 1.1rem}
@@ -36,61 +34,48 @@
     nav a{color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;opacity:.95;transition:var(--transition);padding:.35rem .4rem;border-radius:8px}
     nav a:hover{color:#ffe8c7;background:rgba(0,0,0,.12)}
 
-    /* ===== بانر بخلفية صورة المركز ===== */
+    /* ===== بانر صورة صغيرة (الصورة فقط) ===== */
     .intro{
-      position:relative;
-      min-height: var(--hero-h);
-      padding: 3.5rem 1.1rem; /* يتم ضبطه تلقائياً مع الارتفاع */
-      display:flex;align-items:center;justify-content:center;
-      text-align:center;color:#fff;
-      background:
-        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
-        url("x.png") var(--hero-focal) / cover no-repeat;
-      /* بارالاكس للديسكتوب فقط: */
-      background-attachment: scroll;
+      position:relative;min-height:var(--hero-h);
+      background: url("x.png") var(--hero-focal)/contain no-repeat #100a06; /* contain يجعل الصورة صغيرة بالكامل */
+      background-attachment: scroll; /* لا يوجد تراكب نص */
+      box-shadow: var(--shadow);
+      border-bottom:1px solid rgba(255,255,255,.06);
     }
-    @media (min-width: 992px){
-      .intro{background-attachment: fixed;}
+    /* إلغاء البارالاكس للمستخدمين الذين يفضلون تقليل الحركة */
+    @media (min-width: 992px) and (prefers-reduced-motion: no-preference){
+      .intro{background-attachment: fixed}
     }
 
-    .intro-content{
-      max-width:800px;margin:0 auto;
-      background:rgba(0,0,0,.28);
-      padding:2rem;border-radius:14px;box-shadow:var(--shadow);
-      border:1px solid rgba(255,255,255,.08)
-    }
-    .intro h2{font-size:1.6rem;margin:.6rem 0;color:#ffd5a6}
-    .intro p{font-size:1rem;margin-bottom:.4rem;color:#f0e6db}
-    .tagline{font-size:1.05rem;color:#ffbf86;font-weight:800;margin:.4rem 0 .8rem}
+    /* النص أسفل البانر */
+    .intro-text{max-width:900px;margin:0 auto;padding:1.2rem 1.1rem 1.4rem;text-align:center}
+    .intro-text h2{font-size:clamp(1.2rem, 2.6vw, 1.6rem);margin:.2rem 0;color:#ffd5a6}
+    .intro-text p{font-size:clamp(.95rem, 2.2vw, 1.05rem);color:#f0e6db}
+    .tagline{font-size:clamp(1rem, 2.4vw, 1.1rem);color:#ffbf86;font-weight:800;margin:.4rem 0 .8rem}
     .cta-row{display:flex;gap:.6rem;align-items:center;justify-content:center;flex-wrap:wrap}
     .cta-button{display:inline-block;text-align:center;background:var(--secondary);color:#000;padding:.7rem 1rem;border-radius:12px;text-decoration:none;font-weight:800;transition:var(--transition);box-shadow:var(--shadow)}
     .cta-button:hover{transform:translateY(-3px)}
     .cta-whatsapp{display:flex;align-items:center;gap:.5rem;background:#25D366;color:#000;font-weight:800;padding:.7rem 1rem;border-radius:12px;text-decoration:none;box-shadow:var(--shadow)}
     .cta-whatsapp i{font-size:1.1rem}
 
-    /* تهيئة أفضل للموبايل الصغير */
-    @media (max-width: 480px){
-      :root{ --hero-h: 360px; }
-      .intro{ padding: 2.2rem 1rem; background-attachment: scroll; }
-      .intro h2{ font-size:1.3rem }
-    }
-
+    /* منتجاتنا */
     .products-section{padding:1.2rem 1.1rem 2rem}
     .section-title{text-align:center;margin:.3rem 0 1rem;color:#ffd5a6;font-size:1.3rem;position:relative;padding-bottom:.5rem}
     .section-title::after{content:'';position:absolute;bottom:0;right:50%;transform:translateX(50%);width:100px;height:3px;background:var(--secondary);border-radius:3px}
 
     /* شريط البحث */
     .search-wrap{position:sticky;top:72px;z-index:950;margin-bottom:1rem}
+    @media (max-width: 600px){.search-wrap{top:64px}}
     .search{display:flex;gap:.5rem;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:.6rem .8rem;align-items:center}
     .search input{flex:1;background:transparent;border:0;outline:0;color:#fff;font-size:1rem}
     .search .clear{background:transparent;border:0;color:#fff;opacity:.7;font-size:1.1rem;cursor:pointer}
 
-    /* ثلاث بطاقات دائمًا */
-    .products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    /* شبكة مرنة: 1 عمود موبايل، 2 تابلت، 3+ ديسكتوب */
+    .products-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr))}
 
     .product-card{background:rgba(0,0,0,.35);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);transition:var(--transition);border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column}
     .product-card:hover{transform:translateY(-6px)}
-    .product-image{height:200px;overflow:hidden;background:#1a1a1a}
+    .product-image{aspect-ratio: 4/3;overflow:hidden;background:#1a1a1a}
     .product-image img{width:100%;height:100%;object-fit:cover;display:block}
 
     .product-info{padding:1rem;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(0,0,0,.22));display:flex;flex-direction:column;gap:.4rem}
@@ -105,8 +90,9 @@
 
     footer{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 100%);color:#fff;padding:1.6rem 1.1rem 2.2rem;margin-top:1.2rem}
     .footer-container{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+    @media (max-width: 800px){.footer-container{grid-template-columns:1fr}}
     .footer-section h3{font-size:1.05rem;margin-bottom:.7rem;position:relative;padding-bottom:.4rem;color:#ffe0b5}
-    .footer-section h3::after{content:'';position:absolute;bottom:0;right:0;width:50px;height:2px;background:#ffe0b5;border-radius:2px}
+    .footer-section h3::after{content:'';position:absolute;bottom:0;right:0;width:50px;height:2px;background:#ffe0ب5;border-radius:2px}
     .footer-links{list-style:none}
     .footer-links li{margin-bottom:.45rem}
     .footer-links a{color:#f0e6db;text-decoration:none;transition:var(--transition);display:block}
@@ -138,19 +124,19 @@
       </div>
     </header>
 
-    <!-- بانر الخلفية -->
-    <section class="intro">
-      <div class="intro-content">
-        <!-- تم حذف <img> واستبدالها بخلفية -->
-        <h2>مرحباً بكم في مركز الرجم التجاري</h2>
-        <p>أجود أنواع العسل، الزبيب، الفستق، اللوز ومنتجات المكسرات الأخرى</p>
-        <div class="tagline">جمله وتجزئه.. جودة .. طعم .. وأسعار منافسة</div>
-        <div class="cta-row">
-          <a href="#products" class="cta-button">استكشف المنتجات</a>
-          <a class="cta-whatsapp" href="https://wa.me/967773541614?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA" target="_blank" rel="noopener">
-            <i class="fa-brands fa-whatsapp"></i> تواصل واتساب
-          </a>
-        </div>
+    <!-- بانر صورة فقط (صغير) -->
+    <section class="intro" aria-label="صورة مركز الرجم"></section>
+
+    <!-- النص أسفل الصورة -->
+    <section class="intro-text">
+      <h2>مرحباً بكم في مركز الرجم التجاري</h2>
+      <p>أجود أنواع العسل، الزبيب، الفستق، اللوز ومنتجات المكسرات الأخرى</p>
+      <div class="tagline">جمله وتجزئه.. جودة .. طعم .. وأسعار منافسة</div>
+      <div class="cta-row">
+        <a href="#products" class="cta-button">استكشف المنتجات</a>
+        <a class="cta-whatsapp" href="https://wa.me/967773541614?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA" target="_blank" rel="noopener">
+          <i class="fa-brands fa-whatsapp"></i> تواصل واتساب
+        </a>
       </div>
     </section>
 
