@@ -19,7 +19,7 @@
 
     /* حاوية الديسكتوب */
     .app{
-      max-width:1200px; /* رجعناه ديسكتوب */
+      max-width:1200px;
       margin:0 auto;min-height:100dvh;background:var(--light);
       border-left:1px solid rgba(255,255,255,.06);border-right:1px solid rgba(255,255,255,.06)
     }
@@ -33,18 +33,42 @@
     nav a{color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;opacity:.95;transition:var(--transition);padding:.35rem .4rem;border-radius:8px}
     nav a:hover{color:#ffe8c7;background:rgba(0,0,0,.12)}
 
-    .intro{padding:1.4rem 1.1rem 1rem}
-    .intro-content{background:rgba(255,255,255,.05);padding:1rem;border-radius:14px;box-shadow:var(--shadow);backdrop-filter: blur(2px);border:1px solid rgba(255,255,255,.07)}
-    .intro h2{font-size:1.3rem;margin:.6rem 0;color:#ffd5a6}
+    /* ===== بانر بخلفية صورة المركز ===== */
+    .intro{
+      position:relative;
+      padding:5rem 1.1rem; /* مساحة مريحة فوق وتحت */
+      text-align:center;
+      color:#fff;
+      background: url("x.png") center center / cover no-repeat;
+      /* ملاحظة: سنثبت الخلفية على الديسكتوب فقط تحت */
+    }
+    /* طبقة شفافة فوق الصورة لتحسين قراءة النص */
+    .intro::before{
+      content:"";position:absolute;inset:0;background:rgba(0,0,0,.55)
+    }
+    /* محتوى النص فوق الطبقة */
+    .intro-content{
+      position:relative;
+      max-width:800px;margin:0 auto;
+      background:rgba(0,0,0,.35);
+      padding:2rem;border-radius:14px;box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.08)
+    }
+    .intro h2{font-size:1.5rem;margin:.6rem 0;color:#ffd5a6}
     .intro p{font-size:1rem;margin-bottom:.4rem;color:#f0e6db}
     .tagline{font-size:1.05rem;color:#ffbf86;font-weight:800;margin:.4rem 0 .8rem}
-    .cta-row{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
-    .cta-button{flex:1;display:inline-block;text-align:center;background:var(--secondary);color:#000;padding:.7rem 1rem;border-radius:12px;text-decoration:none;font-weight:800;transition:var(--transition);box-shadow:var(--shadow)}
+    .cta-row{display:flex;gap:.6rem;align-items:center;justify-content:center;flex-wrap:wrap}
+    .cta-button{display:inline-block;text-align:center;background:var(--secondary);color:#000;padding:.7rem 1rem;border-radius:12px;text-decoration:none;font-weight:800;transition:var(--transition);box-shadow:var(--shadow)}
     .cta-button:hover{transform:translateY(-3px)}
     .cta-whatsapp{display:flex;align-items:center;gap:.5rem;background:#25D366;color:#000;font-weight:800;padding:.7rem 1rem;border-radius:12px;text-decoration:none;box-shadow:var(--shadow)}
     .cta-whatsapp i{font-size:1.1rem}
 
-    .products-section{padding:1.2rem 1.1rem 5rem}
+    /* ثبات الخلفية (Parallax) للديسكتوب فقط */
+    @media (min-width: 992px){
+      .intro{background-attachment: fixed;}
+    }
+
+    .products-section{padding:1.2rem 1.1rem 2rem}
     .section-title{text-align:center;margin:.3rem 0 1rem;color:#ffd5a6;font-size:1.3rem;position:relative;padding-bottom:.5rem}
     .section-title::after{content:'';position:absolute;bottom:0;right:50%;transform:translateX(50%);width:100px;height:3px;background:var(--secondary);border-radius:3px}
 
@@ -74,7 +98,7 @@
 
     footer{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 100%);color:#fff;padding:1.6rem 1.1rem 2.2rem;margin-top:1.2rem}
     .footer-container{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-    .footer-section h3{font-size:1.05rem;margin-bottom:.7rem;position:relative;padding-bottom:.4rem;color:#ffe0ب5}
+    .footer-section h3{font-size:1.05rem;margin-bottom:.7rem;position:relative;padding-bottom:.4rem;color:#ffe0b5}
     .footer-section h3::after{content:'';position:absolute;bottom:0;right:0;width:50px;height:2px;background:#ffe0b5;border-radius:2px}
     .footer-links{list-style:none}
     .footer-links li{margin-bottom:.45rem}
@@ -87,7 +111,7 @@
     .phone-number{direction:ltr;text-align:right;display:inline-block;unicode-bidi:plaintext}
     .footer-bottom{text-align:center;margin-top:.9rem;padding-top:.7rem;border-top:1px solid rgba(255,255,255,.2);color:#eee;font-size:.85rem}
 
-    /* زر واتساب عائم */
+    /* زر واتساب عائم (ممكن نحذفه إذا رغبت) */
     .fab-wa{
       position:fixed;left:16px;bottom:16px;z-index:1100;
       background:#25D366;color:#000;border:none;border-radius:999px;
@@ -95,16 +119,6 @@
       padding:.7rem 1rem;font-weight:900;text-decoration:none
     }
     .fab-wa i{font-size:1.2rem}
-
-    /* شريط سفلي (تم حذف زر الاتصال منه) */
-    .bottom-bar{
-      position:fixed;left:0;right:0;bottom:0;z-index:1000;
-      background:rgba(22,13,8,.92);backdrop-filter:blur(8px);
-      border-top:1px solid rgba(255,255,255,.08)
-    }
-    .bottom-inner{max-width:1200px;margin:0 auto;padding:.6rem 1.1rem;display:flex;gap:.6rem}
-    .bottom-inner a{flex:1;text-align:center;text-decoration:none;padding:.6rem;border-radius:12px;font-weight:800;border:1px solid #ffffff22;color:#fff}
-    .bottom-inner a.primary{background:var(--secondary);color:#000;border-color:transparent}
   </style>
 </head>
 <body>
@@ -126,15 +140,15 @@
       </div>
     </header>
 
+    <!-- بانر الخلفية -->
     <section class="intro">
       <div class="intro-content">
-        <img src="x.png" alt="واجهة محل مركز الرجم التجاري" loading="lazy" style="max-width:100%;height:auto;border-radius:12px;margin-bottom:.7rem;">
+        <!-- تم حذف <img> واستبدالها بخلفية -->
         <h2>مرحباً بكم في مركز الرجم التجاري</h2>
         <p>أجود أنواع العسل، الزبيب، الفستق، اللوز ومنتجات المكسرات الأخرى</p>
         <div class="tagline">جمله وتجزئه.. جودة .. طعم .. وأسعار منافسة</div>
         <div class="cta-row">
           <a href="#products" class="cta-button">استكشف المنتجات</a>
-          <!-- رابط واتساب عام -->
           <a class="cta-whatsapp" href="https://wa.me/967773541614?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA" target="_blank" rel="noopener">
             <i class="fa-brands fa-whatsapp"></i> تواصل واتساب
           </a>
@@ -302,18 +316,10 @@
       </div>
     </footer>
 
-    <!-- زر واتساب العائم -->
+    <!-- زر واتساب العائم (أبقيته – قول لي لو تبغى أشيله) -->
     <a class="fab-wa" href="https://wa.me/967773541614?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%2C%20%D8%A7%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">
       <i class="fa-brands fa-whatsapp"></i> واتساب
     </a>
-
-    <!-- شريط سفلي (واتساب ومنتجات فقط) -->
-    <div class="bottom-bar">
-      <div class="bottom-inner">
-        <a class="primary" href="https://wa.me/967773541614?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8%20%D9%88%D8%A7%D9%84%D8%AA%D9%88%D8%B5%D9%8A%D9%84" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> واتساب</a>
-        <a href="#products"><i class="fa-solid fa-box-open"></i> منتجات</a>
-      </div>
-    </div>
   </div>
 
   <script>
