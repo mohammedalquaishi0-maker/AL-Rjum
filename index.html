@@ -13,11 +13,14 @@
       --primary:#8B4513;--primary-dark:#654321;--secondary:#CD853F;
       --light:#1b0f07;--dark:#f5f1ea;--muted:#cab8aa;
       --shadow:0 4px 10px rgba(0,0,0,.35);--transition:all .28s ease;
-      --hero-h: clamp(320px, 50vh, 680px);
+      /* ارتفاع البانر ونقطة التركيز - تم التعديل */
+      --hero-h: clamp(360px, 60vh, 700px);
+      --hero-focal: center center; /* تم التعديل ليكون في المنتصف */
     }
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
     body{background:var(--light);color:var(--dark);line-height:1.6}
 
+    /* حاوية الديسكتوب */
     .app{
       max-width:1200px;
       margin:0 auto;min-height:100dvh;background:var(--light);
@@ -33,26 +36,29 @@
     nav a{color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;opacity:.95;transition:var(--transition);padding:.35rem .4rem;border-radius:8px}
     nav a:hover{color:#ffe8c7;background:rgba(0,0,0,.12)}
 
-    /* ===== بانر بصورة كاملة ===== */
+    /* ===== تعديلات البانر الرئيسي ===== */
     .intro{
       position:relative;
       min-height: var(--hero-h);
       padding: 3.5rem 1.1rem;
       display:flex;align-items:center;justify-content:center;
       text-align:center;color:#fff;
-      overflow:hidden;
-      background: radial-gradient(ellipse at center, rgba(0,0,0,.15), rgba(0,0,0,.45));
+      background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+        url("x.png") var(--hero-focal) / cover no-repeat;
+      /* بارالاكس للديسكتوب فقط: */
+      background-attachment: scroll;
     }
-    .intro-bg{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      object-fit: contain;     /* الصورة تظهر كاملة */
-      object-position: center;
-      filter: brightness(.9);
-      z-index:0;
+    @media (min-width: 992px){
+      .intro{
+        background-attachment: fixed;
+        /* إضافة خاصية لضمان عرض كامل للصورة */
+        background-size: cover;
+        background-position: center center;
+      }
     }
+
     .intro-content{
-      position:relative; z-index:1;
       max-width:800px;margin:0 auto;
       background:rgba(0,0,0,.28);
       padding:2rem;border-radius:14px;box-shadow:var(--shadow);
@@ -67,21 +73,38 @@
     .cta-whatsapp{display:flex;align-items:center;gap:.5rem;background:#25D366;color:#000;font-weight:800;padding:.7rem 1rem;border-radius:12px;text-decoration:none;box-shadow:var(--shadow)}
     .cta-whatsapp i{font-size:1.1rem}
 
+    /* تهيئة أفضل للموبايل الصغير */
     @media (max-width: 480px){
-      :root{ --hero-h: 380px; }
-      .intro{ padding: 2.2rem 1rem; }
+      :root{ --hero-h: 360px; }
+      .intro{ 
+        padding: 2.2rem 1rem; 
+        background-attachment: scroll;
+        /* ضمان عرض كامل للصورة على الموبايل */
+        background-size: cover;
+        background-position: center center;
+      }
       .intro h2{ font-size:1.3rem }
+    }
+
+    /* إضافة استعلام وسيط للشاشات المتوسطة */
+    @media (min-width: 768px) and (max-width: 991px){
+      .intro{
+        background-size: cover;
+        background-position: center center;
+      }
     }
 
     .products-section{padding:1.2rem 1.1rem 2rem}
     .section-title{text-align:center;margin:.3rem 0 1rem;color:#ffd5a6;font-size:1.3rem;position:relative;padding-bottom:.5rem}
     .section-title::after{content:'';position:absolute;bottom:0;right:50%;transform:translateX(50%);width:100px;height:3px;background:var(--secondary);border-radius:3px}
 
+    /* شريط البحث */
     .search-wrap{position:sticky;top:72px;z-index:950;margin-bottom:1rem}
     .search{display:flex;gap:.5rem;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:.6rem .8rem;align-items:center}
     .search input{flex:1;background:transparent;border:0;outline:0;color:#fff;font-size:1rem}
     .search .clear{background:transparent;border:0;color:#fff;opacity:.7;font-size:1.1rem;cursor:pointer}
 
+    /* ثلاث بطاقات دائمًا */
     .products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 
     .product-card{background:rgba(0,0,0,.35);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);transition:var(--transition);border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column}
@@ -134,10 +157,10 @@
       </div>
     </header>
 
-    <!-- بانر بصورة كاملة -->
+    <!-- بانر الخلفية -->
     <section class="intro">
-      <img class="intro-bg" src="x.png" alt="واجهة مركز الرجم" decoding="async" loading="lazy" />
       <div class="intro-content">
+        <!-- تم حذف <img> واستبدالها بخلفية -->
         <h2>مرحباً بكم في مركز الرجم التجاري</h2>
         <p>أجود أنواع العسل، الزبيب، الفستق، اللوز ومنتجات المكسرات الأخرى</p>
         <div class="tagline">جمله وتجزئه.. جودة .. طعم .. وأسعار منافسة</div>
@@ -150,19 +173,178 @@
       </div>
     </section>
 
-    <!-- باقي المنتجات والفوتر نفس ما عندك -->
-    <!-- ... نفس الكود حق المنتجات والفوتر ... -->
+    <section class="products-section" id="products">
+      <h2 class="section-title">منتجاتنا</h2>
 
+      <!-- شريط البحث -->
+      <div class="search-wrap">
+        <div class="search" role="search">
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          <input id="searchInput" type="search" placeholder="ابحث باسم المنتج أو النوع..." autocomplete="off" inputmode="search" />
+          <button class="clear" id="clearBtn" aria-label="مسح البحث">&times;</button>
+        </div>
+      </div>
+
+      <div class="products-grid" id="grid">
+        <!-- بطاقة 1 -->
+        <div class="product-card" data-name="عسل سدر درجة أولى" data-tags="عسل سدر طبيعي" data-price="24000">
+          <div class="product-image">
+            <img src="WhatsApp Image 2025-09-11 at 16.29.42.jpeg" alt="عسل سدر درجة أولى" loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">عسل سدر درجة أولى</h3>
+            <p class="product-desc">عسل طبيعي فاخر من أجود أنواع السدر</p>
+            <div class="price"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>السعر:</span> <strong><span class="price-num">24,000</span> ريال / 1 كجم</strong></div>
+            <div class="actions">
+              <a class="btn btn-wa" target="_blank" rel="noopener"
+                 href="https://wa.me/967773541614?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1:%20%D8%B9%D8%B3%D9%84%20%D8%B3%D8%AF%D8%B1%20%D8%AF%D8%B1%D8%AC%D8%A9%20%D8%A3%D9%88%D9%84%D9%89%20-%2024%2C000%20%D8%B1%D9%8A%D8%A7%D9%84%20%2F%201%20%D9%83%D8%AC%D9%85">
+                 <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- بطاقة 2 -->
+        <div class="product-card" data-name="عسل زهور" data-tags="عسل زهور طبيعي" data-price="15000">
+          <div class="product-image">
+            <img src="WhatsApp Image 2025-09-11 at 16.29.40.jpeg" alt="عسل زهور" loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">عسل زهور</h3>
+            <p class="product-desc">خليط متنوع من رحيق الأزهار الطبيعية</p>
+            <div class="price"><i class="fa-solid fa-tag"></i> <span>السعر:</span> <strong><span class="price-num">15,000</span> ريال / 1 كجم</strong></div>
+            <div class="actions">
+              <a class="btn btn-wa" target="_blank" rel="noopener"
+                 href="https://wa.me/967773541614?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1:%20%D8%B9%D8%B3%D9%84%20%D8%B2%D9%87%D9%88%D8%B1%20-%2015%2C000%20%D8%B1%D9%8A%D8%A7%D9%84%20%2F%201%20%D9%83%D8%AC%D9%85">
+                 <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- بطاقة 3 -->
+        <div class="product-card" data-name="عسل الملكة" data-tags="عسل ملكي" data-price="32000">
+          <div class="product-image">
+            <img src="WhatsApp Image 2025-09-11 at 16.29.35 (1).jpeg" alt="عسل الملكة" loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">عسل الملكة</h3>
+            <p class="product-desc">عسل ملكي مميز بطعم لا يقاوم</p>
+            <div class="price"><i class="fa-solid fa-tag"></i> <span>السعر:</span> <strong><span class="price-num">32,000</span> ريال / 1 كجم</strong></div>
+            <div class="actions">
+              <a class="btn btn-wa" target="_blank" rel="noopener"
+                 href="https://wa.me/967773541614?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1:%20%D8%B9%D8%B3%D9%84%20%D8%A7%D9%84%D9%85%D9%84%D9%83%D8%A9%20-%2032%2C000%20%D8%B1%D9%8A%D8%A7%D9%84%20%2F%201%20%D9%83%D8%AC%D9%85">
+                 <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- بطاقة 4 -->
+        <div class="product-card" data-name="زبيب عضوي" data-tags="زبيب فواكه مجففة" data-price="7000">
+          <div class="product-image">
+            <img src="WhatsApp Image 2025-09-11 at 16.29.26 (2).jpeg" alt="زبيب عضوي" loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">زبيب عضوي</h3>
+            <p class="product-desc">زبيب طبيعي عالي الجودة من أفضل العنب</p>
+            <div class="price"><i class="fa-solid fa-tag"></i> <span>السعر:</span> <strong><span class="price-num">7,000</span> ريال / 1 كجم</strong></div>
+            <div class="actions">
+              <a class="btn btn-wa" target="_blank" rel="noopener"
+                 href="https://wa.me/967773541614?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1:%20%D8%B2%D8%A8%D9%8A%D8%A8%20%D8%B9%D8%B6%D9%88%D9%8A%20-%207%2C000%20%D8%B1%D9%8A%D8%A7%D9%84%20%2F%201%20%D9%83%D8%AC%D9%85">
+                 <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- بطاقة 5 -->
+        <div class="product-card" data-name="فستق حلبي" data-tags="مكسرات فستق" data-price="18000">
+          <div class="product-image">
+            <img src="WhatsApp Image 2025-09-11 at 16.29.26 (1).jpeg" alt="فستق حلبي" loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">فستق حلبي</h3>
+            <p class="product-desc">فستق طازج مقشر من أجود الأنواع</p>
+            <div class="price"><i class="fa-solid fa-tag"></i> <span>السعر:</span> <strong><span class="price-num">18,000</span> ريال / 1 كجم</strong></div>
+            <div class="actions">
+              <a class="btn btn-wa" target="_blank" rel="noopener"
+                 href="https://wa.me/967773541614?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1:%20%D9%81%D8%B3%D8%AA%D9%82%20%D8%AD%D9%84%D8%A8%D9%8A%20-%2018%2C000%20%D8%B1%D9%8A%D8%A7%D9%84%20%2F%201%20%D9%83%D8%AC%D9%85">
+                 <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- بطاقة 6 -->
+        <div class="product-card" data-name="لوز طبيعي" data-tags="مكسرات لوز" data-price="14000">
+          <div class="product-image">
+            <img src="WhatsApp Image 2025-09-11 at 16.29.26 (1).jpeg" alt="لوز طبيعي" loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">لوز طبيعي</h3>
+            <p class="product-desc">لوز مقشر طازج غني بالفوائد الغذائية</p>
+            <div class="price"><i class="fa-solid fa-tag"></i> <span>السعر:</span> <strong><span class="price-num">14,000</span> ريال / 1 كجم</strong></div>
+            <div class="actions">
+              <a class="btn btn-wa" target="_blank" rel="noopener"
+                 href="https://wa.me/967773541614?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1:%20%D9%84%D9%88%D8%B2%20%D8%B7%D8%A8%D9%8A%D8%B9%D9%8A%20-%2014%2C000%20%D8%B1%D9%8A%D8%A7%D9%84%20%2F%201%20%D9%83%D8%AC%D9%85">
+                 <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>روابط سريعة</h3>
+          <ul class="footer-links">
+            <li><a href="#">الرئيسية</a></li>
+            <li><a href="#products">منتجاتنا</a></li>
+            <li><a href="#">الأقسام</a></li>
+            <li><a href="#contact">اتصل بنا</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>عن مركز الرجم</h3>
+          <p class="footer-about">
+            متجر متخصص في المنتجات الغذائية الطبيعية منذ عام 2015.<br>
+            نقدم أجود أنواع المكسرات، العسل، الزبيب والمنتجات الغذائية الأخرى.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h3>اتصل بنا</h3>
+          <div class="contact-info">
+            <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> مدينة الرجم، اليمن</p>
+            <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+967773541614" class="phone-number">+967 773 541 614</a></p>
+            <p><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> <a href="https://wa.me/967773541614" target="_blank" rel="noopener">راسلنا واتساب</a></p>
+            <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:info@alrigian.com">info@alrigian.com</a></p>
+            <p><i class="fas fa-clock" aria-hidden="true"></i> كل يوم من 8 صباحاً إلى 2 صباحاً</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>مركز الرجم التجاري. جميع الحقوق محفوظة. © 2025</p>
+      </div>
+    </footer>
   </div>
 
   <script>
+    // تحديث السنة تلقائيًا
     document.addEventListener('DOMContentLoaded', function () {
       const yearEl = document.querySelector('.footer-bottom p');
       if (yearEl) yearEl.innerHTML = yearEl.innerHTML.replace(/\d{4}$/, new Date().getFullYear());
     });
 
+    // تنسيق الأرقام بالفواصل
     function formatNumber(n){return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");}
 
+    // بحث فوري + فتح البطاقة على واتساب
     (function(){
       const input = document.getElementById('searchInput');
       const clearBtn = document.getElementById('clearBtn');
@@ -185,9 +367,10 @@
       input.addEventListener('input', filter);
       clearBtn.addEventListener('click', ()=>{input.value="";filter();input.focus();});
 
+      // الضغط على البطاقة يفتح واتساب برسالة جاهزة
       cards.forEach(card=>{
         card.addEventListener('click', (e)=>{
-          if(e.target.closest('a,button')) return;
+          if(e.target.closest('a,button')) return; // لا تتداخل مع الأزرار
           const name = card.dataset.name || '';
           const price = formatNumber(card.dataset.price || '');
           const msg = encodeURIComponent(`أريد شراء: ${name} - ${price} ريال`);
