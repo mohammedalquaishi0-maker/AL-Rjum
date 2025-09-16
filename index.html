@@ -12,7 +12,10 @@
     :root{
       --primary:#8B4513;--primary-dark:#654321;--secondary:#CD853F;
       --light:#1b0f07;--dark:#f5f1ea;--muted:#cab8aa;
-      --shadow:0 4px 10px rgba(0,0,0,.35);--transition:all .28s ease
+      --shadow:0 4px 10px rgba(0,0,0,.35);--transition:all .28s ease;
+      /* ارتفاع البانر ونقطة التركيز - تقدر تعدلهم بسهولة */
+      --hero-h: clamp(280px, 42vh, 560px);
+      --hero-focal: 50% 38%; /* 50% أفقياً - 38% عمودياً */
     }
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
     body{background:var(--light);color:var(--dark);line-height:1.6}
@@ -36,25 +39,27 @@
     /* ===== بانر بخلفية صورة المركز ===== */
     .intro{
       position:relative;
-      padding:5rem 1.1rem; /* مساحة مريحة فوق وتحت */
-      text-align:center;
-      color:#fff;
-      background: url("x.png") center center / cover no-repeat;
-      /* ملاحظة: سنثبت الخلفية على الديسكتوب فقط تحت */
+      min-height: var(--hero-h);
+      padding: 3.5rem 1.1rem; /* يتم ضبطه تلقائياً مع الارتفاع */
+      display:flex;align-items:center;justify-content:center;
+      text-align:center;color:#fff;
+      background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+        url("x.png") var(--hero-focal) / cover no-repeat;
+      /* بارالاكس للديسكتوب فقط: */
+      background-attachment: scroll;
     }
-    /* طبقة شفافة فوق الصورة لتحسين قراءة النص */
-    .intro::before{
-      content:"";position:absolute;inset:0;background:rgba(0,0,0,.55)
+    @media (min-width: 992px){
+      .intro{background-attachment: fixed;}
     }
-    /* محتوى النص فوق الطبقة */
+
     .intro-content{
-      position:relative;
       max-width:800px;margin:0 auto;
-      background:rgba(0,0,0,.35);
+      background:rgba(0,0,0,.28);
       padding:2rem;border-radius:14px;box-shadow:var(--shadow);
       border:1px solid rgba(255,255,255,.08)
     }
-    .intro h2{font-size:1.5rem;margin:.6rem 0;color:#ffd5a6}
+    .intro h2{font-size:1.6rem;margin:.6rem 0;color:#ffd5a6}
     .intro p{font-size:1rem;margin-bottom:.4rem;color:#f0e6db}
     .tagline{font-size:1.05rem;color:#ffbf86;font-weight:800;margin:.4rem 0 .8rem}
     .cta-row{display:flex;gap:.6rem;align-items:center;justify-content:center;flex-wrap:wrap}
@@ -63,9 +68,11 @@
     .cta-whatsapp{display:flex;align-items:center;gap:.5rem;background:#25D366;color:#000;font-weight:800;padding:.7rem 1rem;border-radius:12px;text-decoration:none;box-shadow:var(--shadow)}
     .cta-whatsapp i{font-size:1.1rem}
 
-    /* ثبات الخلفية (Parallax) للديسكتوب فقط */
-    @media (min-width: 992px){
-      .intro{background-attachment: fixed;}
+    /* تهيئة أفضل للموبايل الصغير */
+    @media (max-width: 480px){
+      :root{ --hero-h: 360px; }
+      .intro{ padding: 2.2rem 1rem; background-attachment: scroll; }
+      .intro h2{ font-size:1.3rem }
     }
 
     .products-section{padding:1.2rem 1.1rem 2rem}
@@ -110,15 +117,6 @@
     .contact-info i{margin-left:10px;color:#ffe0b5}
     .phone-number{direction:ltr;text-align:right;display:inline-block;unicode-bidi:plaintext}
     .footer-bottom{text-align:center;margin-top:.9rem;padding-top:.7rem;border-top:1px solid rgba(255,255,255,.2);color:#eee;font-size:.85rem}
-
-    /* زر واتساب عائم (ممكن نحذفه إذا رغبت) */
-    .fab-wa{
-      position:fixed;left:16px;bottom:16px;z-index:1100;
-      background:#25D366;color:#000;border:none;border-radius:999px;
-      box-shadow:var(--shadow);display:flex;align-items:center;gap:.55rem;
-      padding:.7rem 1rem;font-weight:900;text-decoration:none
-    }
-    .fab-wa i{font-size:1.2rem}
   </style>
 </head>
 <body>
@@ -315,11 +313,6 @@
         <p>مركز الرجم التجاري. جميع الحقوق محفوظة. © 2025</p>
       </div>
     </footer>
-
-    <!-- زر واتساب العائم (أبقيته – قول لي لو تبغى أشيله) -->
-    <a class="fab-wa" href="https://wa.me/967773541614?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%2C%20%D8%A7%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">
-      <i class="fa-brands fa-whatsapp"></i> واتساب
-    </a>
   </div>
 
   <script>
