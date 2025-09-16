@@ -13,7 +13,7 @@
       --primary:#8B4513;--primary-dark:#654321;--secondary:#CD853F;
       --light:#1b0f07;--dark:#f5f1ea;--muted:#cab8aa;
       --shadow:0 4px 10px rgba(0,0,0,.35);--transition:all .28s ease;
-      --hero-h: clamp(320px, 55vh, 700px);
+      --hero-h: clamp(320px, 50vh, 680px);
     }
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
     body{background:var(--light);color:var(--dark);line-height:1.6}
@@ -33,48 +33,46 @@
     nav a{color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;opacity:.95;transition:var(--transition);padding:.35rem .4rem;border-radius:8px}
     nav a:hover{color:#ffe8c7;background:rgba(0,0,0,.12)}
 
-    /* ===== بانر صورة المحل (يمتد عرض الشاشة كامل) ===== */
+    /* ===== بانر بصورة كاملة ===== */
     .intro{
       position:relative;
       min-height: var(--hero-h);
-      width:100%;
+      padding: 3.5rem 1.1rem;
+      display:flex;align-items:center;justify-content:center;
+      text-align:center;color:#fff;
       overflow:hidden;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,.15), rgba(0,0,0,.45));
     }
-    .intro img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
+    .intro-bg{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit: contain;     /* الصورة تظهر كاملة */
+      object-position: center;
+      filter: brightness(.9);
+      z-index:0;
     }
-
-    /* ===== قسم الترحيب منفصل ===== */
-    .welcome{
-      background: linear-gradient(135deg,var(--primary-dark) 0%,var(--secondary) 100%);
-      color:#fff;
-      padding: 2.5rem 1rem;
-      text-align:center;
+    .intro-content{
+      position:relative; z-index:1;
+      max-width:800px;margin:0 auto;
+      background:rgba(0,0,0,.28);
+      padding:2rem;border-radius:14px;box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.08)
     }
-    .welcome-content{
-      max-width:800px;
-      margin:0 auto;
-    }
-    .welcome h2{font-size:1.8rem;margin:.6rem 0;color:#ffe0b5}
-    .welcome p{font-size:1.1rem;margin-bottom:.4rem;color:#fff}
-    .welcome .tagline{font-size:1.1rem;color:#ffdf9c;font-weight:800;margin:.6rem 0 1rem}
-
+    .intro h2{font-size:1.6rem;margin:.6rem 0;color:#ffd5a6}
+    .intro p{font-size:1rem;margin-bottom:.4rem;color:#f0e6db}
+    .tagline{font-size:1.05rem;color:#ffbf86;font-weight:800;margin:.4rem 0 .8rem}
     .cta-row{display:flex;gap:.6rem;align-items:center;justify-content:center;flex-wrap:wrap}
-    .cta-button{display:inline-block;text-align:center;background:#fff;color:#000;padding:.7rem 1rem;border-radius:12px;text-decoration:none;font-weight:800;transition:var(--transition);box-shadow:var(--shadow)}
+    .cta-button{display:inline-block;text-align:center;background:var(--secondary);color:#000;padding:.7rem 1rem;border-radius:12px;text-decoration:none;font-weight:800;transition:var(--transition);box-shadow:var(--shadow)}
     .cta-button:hover{transform:translateY(-3px)}
     .cta-whatsapp{display:flex;align-items:center;gap:.5rem;background:#25D366;color:#000;font-weight:800;padding:.7rem 1rem;border-radius:12px;text-decoration:none;box-shadow:var(--shadow)}
     .cta-whatsapp i{font-size:1.1rem}
 
     @media (max-width: 480px){
       :root{ --hero-h: 380px; }
-      .welcome h2{ font-size:1.4rem }
-      .welcome p{ font-size:1rem }
+      .intro{ padding: 2.2rem 1rem; }
+      .intro h2{ font-size:1.3rem }
     }
 
-    /* المنتجات */
     .products-section{padding:1.2rem 1.1rem 2rem}
     .section-title{text-align:center;margin:.3rem 0 1rem;color:#ffd5a6;font-size:1.3rem;position:relative;padding-bottom:.5rem}
     .section-title::after{content:'';position:absolute;bottom:0;right:50%;transform:translateX(50%);width:100px;height:3px;background:var(--secondary);border-radius:3px}
@@ -118,11 +116,6 @@
   </style>
 </head>
 <body>
-  <!-- بانر صورة المحل بعرض الشاشة -->
-  <section class="intro">
-    <img src="x.png" alt="واجهة مركز الرجم" loading="lazy" decoding="async">
-  </section>
-
   <div class="app">
     <header>
       <div class="header-container">
@@ -141,61 +134,25 @@
       </div>
     </header>
 
-    <!-- قسم الترحيب -->
-    <section class="welcome">
-      <div class="welcome-content">
+    <!-- بانر بصورة كاملة -->
+    <section class="intro">
+      <img class="intro-bg" src="x.png" alt="واجهة مركز الرجم" decoding="async" loading="lazy" />
+      <div class="intro-content">
         <h2>مرحباً بكم في مركز الرجم التجاري</h2>
         <p>أجود أنواع العسل، الزبيب، الفستق، اللوز ومنتجات المكسرات الأخرى</p>
         <div class="tagline">جمله وتجزئه.. جودة .. طعم .. وأسعار منافسة</div>
         <div class="cta-row">
           <a href="#products" class="cta-button">استكشف المنتجات</a>
-          <a class="cta-whatsapp" href="https://wa.me/967773541614?text=استفسار عن المنتجات" target="_blank" rel="noopener">
+          <a class="cta-whatsapp" href="https://wa.me/967773541614?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA" target="_blank" rel="noopener">
             <i class="fa-brands fa-whatsapp"></i> تواصل واتساب
           </a>
         </div>
       </div>
     </section>
 
-    <!-- قسم المنتجات -->
-    <section class="products-section" id="products">
-      <h2 class="section-title">منتجاتنا</h2>
-      <!-- ضع هنا البطاقات والبحث الخاصة بالمنتجات -->
-    </section>
+    <!-- باقي المنتجات والفوتر نفس ما عندك -->
+    <!-- ... نفس الكود حق المنتجات والفوتر ... -->
 
-    <!-- الفوتر -->
-    <footer id="contact">
-      <div class="footer-container">
-        <div class="footer-section">
-          <h3>روابط سريعة</h3>
-          <ul class="footer-links">
-            <li><a href="#">الرئيسية</a></li>
-            <li><a href="#products">منتجاتنا</a></li>
-            <li><a href="#">الأقسام</a></li>
-            <li><a href="#contact">اتصل بنا</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>عن مركز الرجم</h3>
-          <p class="footer-about">
-            متجر متخصص في المنتجات الغذائية الطبيعية منذ عام 2015.<br>
-            نقدم أجود أنواع المكسرات، العسل، الزبيب والمنتجات الغذائية الأخرى.
-          </p>
-        </div>
-        <div class="footer-section">
-          <h3>اتصل بنا</h3>
-          <div class="contact-info">
-            <p><i class="fas fa-map-marker-alt"></i> مدينة الرجم، اليمن</p>
-            <p><i class="fas fa-phone"></i> <a href="tel:+967773541614" class="phone-number">+967 773 541 614</a></p>
-            <p><i class="fa-brands fa-whatsapp"></i> <a href="https://wa.me/967773541614" target="_blank" rel="noopener">راسلنا واتساب</a></p>
-            <p><i class="fas fa-envelope"></i> <a href="mailto:info@alrigian.com">info@alrigian.com</a></p>
-            <p><i class="fas fa-clock"></i> كل يوم من 8 صباحاً إلى 2 صباحاً</p>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>مركز الرجم التجاري. جميع الحقوق محفوظة. © 2025</p>
-      </div>
-    </footer>
   </div>
 
   <script>
@@ -203,6 +160,41 @@
       const yearEl = document.querySelector('.footer-bottom p');
       if (yearEl) yearEl.innerHTML = yearEl.innerHTML.replace(/\d{4}$/, new Date().getFullYear());
     });
+
+    function formatNumber(n){return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");}
+
+    (function(){
+      const input = document.getElementById('searchInput');
+      const clearBtn = document.getElementById('clearBtn');
+      const cards = Array.from(document.querySelectorAll('.product-card'));
+      const grid = document.getElementById('grid');
+
+      function filter(){
+        const q = input.value.trim().toLowerCase();
+        let any = false;
+        cards.forEach(card=>{
+          const name = (card.dataset.name||"").toLowerCase();
+          const tags = (card.dataset.tags||"").toLowerCase();
+          const show = !q || name.includes(q) || tags.includes(q);
+          card.style.display = show ? "" : "none";
+          if(show) any = true;
+        });
+        grid.dataset.empty = any ? "0" : "1";
+      }
+
+      input.addEventListener('input', filter);
+      clearBtn.addEventListener('click', ()=>{input.value="";filter();input.focus();});
+
+      cards.forEach(card=>{
+        card.addEventListener('click', (e)=>{
+          if(e.target.closest('a,button')) return;
+          const name = card.dataset.name || '';
+          const price = formatNumber(card.dataset.price || '');
+          const msg = encodeURIComponent(`أريد شراء: ${name} - ${price} ريال`);
+          window.open(`https://wa.me/967773541614?text=${msg}`,'_blank');
+        });
+      });
+    })();
   </script>
 </body>
 </html>
