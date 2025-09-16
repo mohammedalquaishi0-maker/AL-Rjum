@@ -13,7 +13,7 @@
       --primary:#8B4513;--primary-dark:#654321;--secondary:#CD853F;
       --light:#1b0f07;--dark:#f5f1ea;--muted:#cab8aa;
       --shadow:0 4px 10px rgba(0,0,0,.35);--transition:all .28s ease;
-      /* ارتفاع البانر */
+      /* ارتفاع البانر الافتراضي (سيتم تجاوزه بالقواعد الجديدة) */
       --hero-h: clamp(400px,80vh, 800px);
     }
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
@@ -36,21 +36,36 @@
 
     /* ===== البانر: صورة فقط بلا نص ===== */
     .intro{
-      position:relative;min-height: var(--hero-h);
+      position:relative;
+      /* نجعل الارتفاع مرنًا حسب الجهاز */
+      height:70vh;         /* ديسكتوب */
+      min-height:400px;
+      max-height:800px;
       background: url("x.png") center center / cover no-repeat;
       background-attachment: scroll;
     }
     @media (min-width: 992px){
       .intro{background-attachment: fixed}
     }
+    /* تابلت */
+    @media (max-width: 991px){
+      .intro{
+        height:55vh;
+        min-height:320px;
+        background-position:center top;
+      }
+    }
     /* للموبايل */
     @media (max-width: 480px){
-      :root{ --hero-h: 360px; }
-      .intro{ background-attachment: scroll;background-size: cover;background-position: center center; }
+      .intro{
+        height:40vh;
+        min-height:250px;
+        background-position:center top;
+      }
     }
-    /* للشاشات المتوسطة */
+    /* للشاشات المتوسطة (إبقاء السلوك السابق) */
     @media (min-width: 768px) and (max-width: 991px){
-      .intro{ background-size: cover;background-position: center center; }
+      .intro{ background-size: cover;background-position: center top; }
     }
 
     /* ===== النصوص تحت الصورة (منفصلة) ===== */
@@ -107,8 +122,8 @@
 
     footer{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 100%);color:#fff;padding:1.6rem 1.1rem 2.2rem;margin-top:1.2rem}
     .footer-container{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-    .footer-section h3{font-size:1.05rem;margin-bottom:.7rem;position:relative;padding-bottom:.4rem;color:#ffe0b5}
-    .footer-section h3::after{content:'';position:absolute;bottom:0;right:0;width:50px;height:2px;background:#ffe0b5;border-radius:2px} /* أصلحت اللون هنا */
+    .footer-section h3{font-size:1.05rem;margin-bottom:.7rem;position:relative;padding-bottom:.4rem;color:#ffe0ب5} /* كان بها خطأ مطبعي - سنستبدلها بالسطر التالي أدناه */
+    .footer-section h3::after{content:'';position:absolute;bottom:0;right:0;width:50px;height:2px;background:#ffe0b5;border-radius:2px}
     .footer-links{list-style:none}
     .footer-links li{margin-bottom:.45rem}
     .footer-links a{color:#f0e6db;text-decoration:none;transition:var(--transition);display:block}
