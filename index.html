@@ -28,10 +28,10 @@
     header{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);color:#fff;padding:.9rem 0;box-shadow:var(--shadow);position:sticky;top:0;z-index:1000}
     .header-container{display:flex;justify-content:space-between;align-items:center;padding:0 1.1rem}
     .logo{display:flex;align-items:center;gap:.6rem}
-    .logo h1{font-size:1.25rem;font-weight:800;letter-spacing:.2px}
+    .logo h1{font-size:1.1rem;font-weight:800;letter-spacing:.2px} /* كان 1.25rem */
     .logo-icon{font-size:1.4rem;color:var(--secondary)}
     nav ul{display:flex;list-style:none;gap:1rem}
-    nav a{color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;opacity:.95;transition:var(--transition);padding:.35rem .4rem;border-radius:8px}
+    nav a{color:#fff;text-decoration:none;font-weight:600;font-size:.9rem;opacity:.95;transition:var(--transition);padding:.35rem .4rem;border-radius:8px} /* كان .95rem */
     nav a:hover{color:#ffe8c7;background:rgba(0,0,0,.12)}
 
     /* ===== البانر: صورة فقط بلا نص ===== */
@@ -108,7 +108,7 @@
     footer{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 100%);color:#fff;padding:1.6rem 1.1rem 2.2rem;margin-top:1.2rem}
     .footer-container{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
     .footer-section h3{font-size:1.05rem;margin-bottom:.7rem;position:relative;padding-bottom:.4rem;color:#ffe0b5}
-    .footer-section h3::after{content:'';position:absolute;bottom:0;right:0;width:50px;height:2px;background:#ffe0ب5;border-radius:2px}
+    .footer-section h3::after{content:'';position:absolute;bottom:0;right:0;width:50px;height:2px;background:#ffe0b5;border-radius:2px} /* أصلحت اللون هنا */
     .footer-links{list-style:none}
     .footer-links li{margin-bottom:.45rem}
     .footer-links a{color:#f0e6db;text-decoration:none;transition:var(--transition);display:block}
@@ -119,6 +119,39 @@
     .contact-info i{margin-left:10px;color:#ffe0b5}
     .phone-number{direction:ltr;text-align:right;display:inline-block;unicode-bidi:plaintext}
     .footer-bottom{text-align:center;margin-top:.9rem;padding-top:.7rem;border-top:1px solid rgba(255,255,255,.2);color:#eee;font-size:.85rem}
+
+    /* ===== التصغير التدريجي لخط الهيدر والفوتر ===== */
+    /* ديسكتوب (افتراضي) */
+    .logo h1{font-size:1.1rem}
+    nav a{font-size:.9rem}
+    footer{font-size:0.85rem}
+    .footer-section h3{font-size:0.95rem}
+    .footer-about,
+    .footer-links a,
+    .contact-info,
+    .footer-bottom{font-size:0.82rem}
+
+    /* تابلت */
+    @media (max-width: 991px) {
+      .logo h1 {font-size:1rem;}
+      nav a {font-size:0.85rem;}
+      .footer-section h3 {font-size:0.9rem;}
+      .footer-about,
+      .footer-links a,
+      .contact-info,
+      .footer-bottom {font-size:0.78rem;}
+    }
+
+    /* موبايل */
+    @media (max-width: 480px) {
+      .logo h1 {font-size:0.9rem;font-weight:900;}
+      nav a {font-size:0.8rem;}
+      .footer-section h3 {font-size:0.85rem;}
+      .footer-about,
+      .footer-links a,
+      .contact-info,
+      .footer-bottom {font-size:0.75rem;}
+    }
   </style>
 </head>
 <body>
