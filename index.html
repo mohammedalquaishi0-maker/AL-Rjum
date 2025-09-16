@@ -1,57 +1,895 @@
-<!-- بانر الخلفية فقط -->
-<section class="hero"></section>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>مركز الرجم التجاري - منتجات طبيعية عالية الجودة</title>
+  <meta name="description" content="أجود أنواع العسل، الزبيب، الفستق، اللوز ومنتجات المكسرات الأخرى. جمله وتجزئه بأسعار منافسة." />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 
-<!-- النص منفصل تحت الصورة -->
-<section class="intro-text">
-  <div class="intro-content">
-    <h2>مرحباً بكم في مركز الرجم التجاري</h2>
-    <p>أجود أنواع العسل، الزبيب، الفستق، اللوز ومنتجات المكسرات الأخرى</p>
-    <div class="tagline">جمله وتجزئه.. جودة .. طعم .. وأسعار منافسة</div>
-    <div class="cta-row">
-      <a href="#products" class="cta-button">استكشف المنتجات</a>
-      <a class="cta-whatsapp" href="https://wa.me/967773541614?text=أريد%20الاستفسار%20عن%20المنتجات" target="_blank" rel="noopener">
-        <i class="fa-brands fa-whatsapp"></i> تواصل واتساب
-      </a>
-    </div>
+  <style>
+    :root {
+      --primary: #8B4513;
+      --primary-dark: #654321;
+      --secondary: #CD853F;
+      --accent: #DAA520;
+      --light-bg: #1b0f07;
+      --dark-text: #f5f1ea;
+      --muted: #cab8aa;
+      --card-bg: rgba(26, 18, 11, 0.85);
+      --overlay: rgba(0, 0, 0, 0.7);
+      --shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Tajawal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background: var(--light-bg);
+      color: var(--dark-text);
+      line-height: 1.7;
+    }
+
+    .app {
+      max-width: 1400px;
+      margin: 0 auto;
+      min-height: 100dvh;
+      background: var(--light-bg);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ========== HEADER ========== */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #fff;
+      padding: 0.9rem 0;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    
+    .logo h1 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      background: linear-gradient(to right, #ffd5a6, #ffbf86);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .logo-icon {
+      font-size: 1.8rem;
+      color: var(--accent);
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+    
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      opacity: 0.9;
+      transition: var(--transition);
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      position: relative;
+    }
+    
+    nav a:hover {
+      color: #ffe8c7;
+      background: rgba(0, 0, 0, 0.15);
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* ========== HERO SECTION ========== */
+    .intro {
+      position: relative;
+      padding: 6rem 2rem;
+      text-align: center;
+      color: #fff;
+      background: linear-gradient(var(--overlay), var(--overlay)), url("x.png") center center / cover no-repeat;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .intro-content {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      animation: fadeIn 1s ease;
+    }
+    
+    .intro h2 {
+      font-size: 2.2rem;
+      margin: 0.8rem 0;
+      color: #ffd5a6;
+      font-weight: 800;
+    }
+    
+    .intro p {
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+      color: #f0e6db;
+    }
+    
+    .tagline {
+      font-size: 1.2rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin: 0.8rem 0 1.2rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .tagline::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      right: 50%;
+      transform: translateX(50%);
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+    
+    .cta-row {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      text-align: center;
+      background: var(--secondary);
+      color: #000;
+      padding: 0.9rem 1.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+      border: 2px solid transparent;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-5px);
+      background: transparent;
+      color: var(--secondary);
+      border-color: var(--secondary);
+    }
+    
+    .cta-whatsapp {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #25D366;
+      color: #000;
+      font-weight: 800;
+      padding: 0.9rem 1.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+    
+    .cta-whatsapp:hover {
+      transform: translateY(-5px);
+      background: transparent;
+      color: #25D366;
+      border-color: #25D366;
+    }
+    
+    .cta-whatsapp i {
+      font-size: 1.3rem;
+    }
+
+    @media (min-width: 992px) {
+      .intro {
+        background-attachment: fixed;
+      }
+    }
+
+    /* ========== PRODUCTS SECTION ========== */
+    .products-section {
+      padding: 3rem 2rem;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin: 1rem 0 2rem;
+      color: #ffd5a6;
+      font-size: 2rem;
+      position: relative;
+      padding-bottom: 1rem;
+      font-weight: 800;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 50%;
+      transform: translateX(50%);
+      width: 120px;
+      height: 4px;
+      background: var(--secondary);
+      border-radius: 3px;
+    }
+
+    /* Search Bar */
+    .search-wrap {
+      position: sticky;
+      top: 72px;
+      z-index: 950;
+      margin-bottom: 2rem;
+      background: var(--light-bg);
+      padding: 1rem 0;
+    }
+    
+    .search {
+      display: flex;
+      gap: 0.8rem;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 0.8rem 1.2rem;
+      align-items: center;
+      max-width: 600px;
+      margin: 0 auto;
+      transition: var(--transition);
+    }
+    
+    .search:focus-within {
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 2px rgba(205, 133, 63, 0.3);
+    }
+    
+    .search i {
+      color: var(--muted);
+    }
+    
+    .search input {
+      flex: 1;
+      background: transparent;
+      border: 0;
+      outline: 0;
+      color: #fff;
+      font-size: 1rem;
+    }
+    
+    .search input::placeholder {
+      color: var(--muted);
+    }
+    
+    .search .clear {
+      background: transparent;
+      border: 0;
+      color: #fff;
+      opacity: 0.7;
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: var(--transition);
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    
+    .search .clear:hover {
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Products Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .product-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+    }
+    
+    .product-image {
+      height: 220px;
+      overflow: hidden;
+      background: #1a1a1a;
+      position: relative;
+    }
+    
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: var(--transition);
+    }
+    
+    .product-card:hover .product-image img {
+      transform: scale(1.05);
+    }
+    
+    .product-info {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      flex-grow: 1;
+    }
+    
+    .product-name {
+      font-size: 1.2rem;
+      margin: 0;
+      color: #ffbf86;
+      font-weight: 800;
+    }
+    
+    .product-desc {
+      color: #f0e6db;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    
+    .price {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      font-weight: 900;
+      color: #ffe0b5;
+      background: rgba(139, 69, 19, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      align-self: flex-start;
+    }
+    
+    .price i {
+      color: #ffd18f;
+    }
+    
+    .actions {
+      margin-top: auto;
+      display: flex;
+      gap: 0.8rem;
+    }
+    
+    .btn {
+      flex: 1;
+      text-align: center;
+      text-decoration: none;
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      font-weight: 800;
+      transition: var(--transition);
+      border: 1px solid transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .btn-wa {
+      background: #25D366;
+      color: #000;
+    }
+    
+    .btn-wa:hover {
+      background: transparent;
+      color: #25D366;
+      border-color: #25D366;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #fff;
+      padding: 3rem 2rem 2.5rem;
+      margin-top: 3rem;
+    }
+    
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .footer-section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+      position: relative;
+      padding-bottom: 0.6rem;
+      color: #ffe0b5;
+      font-weight: 700;
+    }
+    
+    .footer-section h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 60px;
+      height: 3px;
+      background: #ffe0b5;
+      border-radius: 2px;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+    
+    .footer-links a {
+      color: #f0e6db;
+      text-decoration: none;
+      transition: var(--transition);
+      display: block;
+      padding: 0.3rem 0;
+    }
+    
+    .footer-links a:hover {
+      color: #fff;
+      transform: translateX(-5px);
+    }
+    
+    .footer-about {
+      color: #f0e6db;
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+    
+    .contact-info {
+      color: #f0e6db;
+    }
+    
+    .contact-info p {
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .contact-info i {
+      margin-left: 12px;
+      color: #ffe0b5;
+      font-size: 1.1rem;
+      width: 24px;
+    }
+    
+    .phone-number {
+      direction: ltr;
+      text-align: right;
+      display: inline-block;
+      unicode-bidi: plaintext;
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      color: #eee;
+      font-size: 0.9rem;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Floating WhatsApp Button */
+    .fab-wa {
+      position: fixed;
+      left: 20px;
+      bottom: 20px;
+      z-index: 1100;
+      background: #25D366;
+      color: #000;
+      border: none;
+      border-radius: 50px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.9rem 1.5rem;
+      font-weight: 900;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .fab-wa:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+    }
+    
+    .fab-wa i {
+      font-size: 1.4rem;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 0 1rem;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      nav ul {
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .intro {
+        padding: 4rem 1rem;
+      }
+      
+      .intro-content {
+        padding: 1.5rem;
+      }
+      
+      .intro h2 {
+        font-size: 1.8rem;
+      }
+      
+      .cta-row {
+        flex-direction: column;
+      }
+      
+      .products-section {
+        padding: 2rem 1rem;
+      }
+      
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      footer {
+        padding: 2rem 1rem;
+      }
+      
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .fab-wa {
+        bottom: 15px;
+        left: 15px;
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="header-container">
+        <div class="logo">
+          <i class="fas fa-store logo-icon" aria-hidden="true"></i>
+          <h1>مركز الرجم التجاري</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#">الرئيسية</a></li>
+            <li><a href="#products">منتجاتنا</a></li>
+            <li><a href="#">الأقسام</a></li>
+            <li><a href="#contact">اتصل بنا</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- بانر الخلفية -->
+    <section class="intro">
+      <div class="intro-content">
+        <h2>مرحباً بكم في مركز الرجم التجاري</h2>
+        <p>أجود أنواع العسل، الزبيب، الفستق، اللوز ومنتجات المكسرات الأخرى</p>
+        <div class="tagline">جمله وتجزئه.. جودة .. طعم .. وأسعار منافسة</div>
+        <div class="cta-row">
+          <a href="#products" class="cta-button">استكشف المنتجات</a>
+          <a class="cta-whatsapp" href="https://wa.me/967773541614?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA" target="_blank" rel="noopener">
+            <i class="fa-brands fa-whatsapp"></i> تواصل واتساب
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="products-section" id="products">
+      <h2 class="section-title">منتجاتنا</h2>
+
+      <!-- شريط البحث -->
+      <div class="search-wrap">
+        <div class="search" role="search">
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          <input id="searchInput" type="search" placeholder="ابحث باسم المنتج أو النوع..." autocomplete="off" inputmode="search" />
+          <button class="clear" id="clearBtn" aria-label="مسح البحث">&times;</button>
+        </div>
+      </div>
+
+      <div class="products-grid" id="grid">
+        <!-- بطاقة 1 -->
+        <div class="product-card" data-name="عسل سدر درجة أولى" data-tags="عسل سدر طبيعي" data-price="24000">
+          <div class="product-image">
+            <img src="WhatsApp Image 2025-09-11 at 16.29.42.jpeg" alt="عسل سدر درجة أولى" loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">عسل سدر درجة أولى</h3>
+            <p class="product-desc">عسل طبيعي فاخر من أجود أنواع السدر</p>
+            <div class="price"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>السعر:</span> <strong><span class="price-num">24,000</span> ريال / 1 كجم</strong></div>
+            <div class="actions">
+              <a class="btn btn-wa" target="_blank" rel="noopener"
+                 href="https://wa.me/967773541614?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1:%20%D8%B9%D8%B3%D9%84%20%D8%B3%D8%AF%D8%B1%20%D8%AF%D8%B1%D8%AC%D8%A9%20%D8%A3%D9%88%D9%84%D9%89%20-%2024%2C000%20%D8%B1%D9%8A%D8%A7%D9%84%20%2F%201%20%D9%83%D8%AC%D9%85">
+                 <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- بطاقة 2 -->
+        <div class="product-card" data-name="عسل زهور" data-tags="عسل زهور طبيعي" data-price="15000">
+          <div class="product-image">
+            <img src="WhatsApp Image 2025-09-11 at 16.29.40.jpeg" alt="عسل زهور" loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">عسل زهور</h3>
+            <p class="product-desc">خليط متنوع من رحيق الأزهار الطبيعية</p>
+            <div class="price"><i class="fa-solid fa-tag"></i> <span>السعر:</span> <strong><span class="price-num">15,000</span> ريال / 1 كجم</strong></div>
+            <div class="actions">
+              <a class="btn btn-wa" target="_blank" rel="noopener"
+                 href="https://wa.me/967773541614?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1:%20%D8%B9%D8%B3%D9%84%20%D8%B2%D9%87%D9%88%D8%B1%20-%2015%2C000%20%D8%B1%D9%8A%D8%A7%D9%84%20%2F%201%20%D9%83%D8%AC%D9%85">
+                 <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- بطاقة 3 -->
+        <div class="product-card" data-name="عسل الملكة" data-tags="عسل ملكي" data-price="32000">
+          <div class="product-image">
+            <img src="WhatsApp Image 2025-09-11 at 16.29.35 (1).jpeg" alt="عسل الملكة" loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">عسل الملكة</h3>
+            <p class="product-desc">عسل ملكي مميز بطعم لا يقاوم</p>
+            <div class="price"><i class="fa-solid fa-tag"></i> <span>السعر:</span> <strong><span class="price-num">32,000</span> ريال / 1 كجم</strong></div>
+            <div class="actions">
+              <a class="btn btn-wa" target="_blank" rel="noopener"
+                 href="https://wa.me/967773541614?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1:%20%D8%B9%D8%B3%D9%84%20%D8%A7%D9%84%D9%85%D9%84%D9%83%D8%A9%20-%2032%2C000%20%D8%B1%D9%8A%D8%A7%D9%84%20%2F%201%20%D9%83%D8%AC%D9%85">
+                 <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- بطاقة 4 -->
+        <div class="product-card" data-name="زبيب عضوي" data-tags="زبيب فواكه مجففة" data-price="7000">
+          <div class="product-image">
+            <img src="WhatsApp Image 2025-09-11 at 16.29.26 (2).jpeg" alt="زبيب عضوي" loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">زبيب عضوي</h3>
+            <p class="product-desc">زبيب طبيعي عالي الجودة من أفضل العنب</p>
+            <div class="price"><i class="fa-solid fa-tag"></i> <span>السعر:</span> <strong><span class="price-num">7,000</span> ريال / 1 كجم</strong></div>
+            <div class="actions">
+              <a class="btn btn-wa" target="_blank" rel="noopener"
+                 href="https://wa.me/967773541614?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1:%20%D8%B2%D8%A8%D9%8A%D8%A8%20%D8%B9%D8%B6%D9%88%D9%8A%20-%207%2C000%20%D8%B1%D9%8A%D8%A7%D9%84%20%2F%201%20%D9%83%D8%AC%D9%85">
+                 <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- بطاقة 5 -->
+        <div class="product-card" data-name="فستق حلبي" data-tags="مكسرات فستق" data-price="18000">
+          <div class="product-image">
+            <img src="WhatsApp Image 2025-09-11 at 16.29.26 (1).jpeg" alt="فستق حلبي" loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">فستق حلبي</h3>
+            <p class="product-desc">فستق طازج مقشر من أجود الأنواع</p>
+            <div class="price"><i class="fa-solid fa-tag"></i> <span>السعر:</span> <strong><span class="price-num">18,000</span> ريال / 1 كجم</strong></div>
+            <div class="actions">
+              <a class="btn btn-wa" target="_blank" rel="noopener"
+                 href="https://wa.me/967773541614?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1:%20%D9%81%D8%B3%D8%AA%D9%82%20%D8%AD%D9%84%D8%A8%D9%8A%20-%2018%2C000%20%D8%B1%D9%8A%D8%A7%D9%84%20%2F%201%20%D9%83%D8%AC%D9%85">
+                 <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- بطاقة 6 -->
+        <div class="product-card" data-name="لوز طبيعي" data-tags="مكسرات لوز" data-price="14000">
+          <div class="product-image">
+            <img src="WhatsApp Image 2025-09-11 at 16.29.26 (1).jpeg" alt="لوز طبيعي" loading="lazy">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">لوز طبيعي</h3>
+            <p class="product-desc">لوز مقشر طازج غني بالفوائد الغذائية</p>
+            <div class="price"><i class="fa-solid fa-tag"></i> <span>السعر:</span> <strong><span class="price-num">14,000</span> ريال / 1 كجم</strong></div>
+            <div class="actions">
+              <a class="btn btn-wa" target="_blank" rel="noopener"
+                 href="https://wa.me/967773541614?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1:%20%D9%84%D9%88%D8%B2%20%D8%B7%D8%A1%D9%8A%D8%B9%D9%8A%20-%2014%2C000%20%D8%B1%D9%8A%D8%A7%D9%84%20%2F%201%20%D9%83%D8%AC%D9%85">
+                 <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>روابط سريعة</h3>
+          <ul class="footer-links">
+            <li><a href="#">الرئيسية</a></li>
+            <li><a href="#products">منتجاتنا</a></li>
+            <li><a href="#">الأقسام</a></li>
+            <li><a href="#contact">اتصل بنا</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>عن مركز الرجم</h3>
+          <p class="footer-about">
+            متجر متخصص في المنتجات الغذائية الطبيعية منذ عام 2015.<br>
+            نقدم أجود أنواع المكسرات، العسل، الزبيب والمنتجات الغذائية الأخرى.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h3>اتصل بنا</h3>
+          <div class="contact-info">
+            <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> مدينة الرجم، اليمن</p>
+            <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+967773541614" class="phone-number">+967 773 541 614</a></p>
+            <p><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> <a href="https://wa.me/967773541614" target="_blank" rel="noopener">راسلنا واتساب</a></p>
+            <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:info@alrigian.com">info@alrigian.com</a></p>
+            <p><i class="fas fa-clock" aria-hidden="true"></i> كل يوم من 8 صباحاً إلى 2 صباحاً</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>مركز الرجم التجاري. جميع الحقوق محفوظة. © 2025</p>
+      </div>
+    </footer>
+
+    <!-- زر واتساب العائم -->
+    <a class="fab-wa" href="https://wa.me/967773541614?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%2C%20%D8%A7%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">
+      <i class="fa-brands fa-whatsapp"></i> واتساب
+    </a>
   </div>
-</section>
 
-<style>
-  /* بانر الخلفية */
-  .hero{
-    background: url("x.png") center center / cover no-repeat;
-    width: 100%;
-    min-height: 320px;
-  }
-  @media (min-width: 768px){
-    .hero{min-height: 480px;background-attachment: fixed;}
-  }
+  <script>
+    // تحديث السنة تلقائيًا
+    document.addEventListener('DOMContentLoaded', function () {
+      const yearEl = document.querySelector('.footer-bottom p');
+      if (yearEl) yearEl.innerHTML = yearEl.innerHTML.replace(/\d{4}$/, new Date().getFullYear());
+    });
 
-  /* النص أسفل البانر */
-  .intro-text{
-    text-align:center;
-    padding:2rem 1rem;
-    background: var(--light);
-  }
-  .intro-content{
-    max-width:800px;
-    margin:0 auto;
-  }
-  .intro-text h2{font-size:1.8rem;margin:.6rem 0;color:#ffd5a6}
-  .intro-text p{font-size:1.1rem;margin-bottom:.5rem;color:#f0e6db}
-  .tagline{font-size:1.2rem;color:#ffbf86;font-weight:800;margin:.7rem 0 1rem}
-  .cta-row{display:flex;gap:.6rem;align-items:center;justify-content:center;flex-wrap:wrap}
-  .cta-button{
-    display:inline-block;background:var(--secondary);color:#000;
-    padding:.7rem 1rem;border-radius:12px;text-decoration:none;font-weight:800;
-    transition:.3s;box-shadow:0 4px 8px rgba(0,0,0,.3)
-  }
-  .cta-button:hover{transform:translateY(-3px)}
-  .cta-whatsapp{
-    display:flex;align-items:center;gap:.5rem;
-    background:#25D366;color:#000;font-weight:800;
-    padding:.7rem 1rem;border-radius:12px;text-decoration:none;
-    box-shadow:0 4px 8px rgba(0,0,0,.3)
-  }
-  .cta-whatsapp i{font-size:1.1rem}
-</style>
+    // تنسيق الأرقام بالفواصل
+    function formatNumber(n){return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");}
+
+    // بحث فوري + فتح البطاقة على واتساب
+    (function(){
+      const input = document.getElementById('searchInput');
+      const clearBtn = document.getElementById('clearBtn');
+      const cards = Array.from(document.querySelectorAll('.product-card'));
+      const grid = document.getElementById('grid');
+
+      function filter(){
+        const q = input.value.trim().toLowerCase();
+        let any = false;
+        cards.forEach(card=>{
+          const name = (card.dataset.name||"").toLowerCase();
+          const tags = (card.dataset.tags||"").toLowerCase();
+          const show = !q || name.includes(q) || tags.includes(q);
+          card.style.display = show ? "" : "none";
+          if(show) any = true;
+        });
+        grid.dataset.empty = any ? "0" : "1";
+      }
+
+      input.addEventListener('input', filter);
+      clearBtn.addEventListener('click', ()=>{input.value="";filter();input.focus();});
+
+      // الضغط على البطاقة يفتح واتساب برسالة جاهزة
+      cards.forEach(card=>{
+        card.addEventListener('click', (e)=>{
+          if(e.target.closest('a,button')) return; // لا تتداخل مع الأزرار
+          const name = card.dataset.name || '';
+          const price = formatNumber(card.dataset.price || '');
+          const msg = encodeURIComponent(`أريد شراء: ${name} - ${price} ريال`);
+          window.open(`https://wa.me/967773541614?text=${msg}`,'_blank');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
